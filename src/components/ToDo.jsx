@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ClearList from "./ClearList";
 
  
 
@@ -6,6 +7,7 @@ const ToDo = () => {
     const [list,setList]=useState([])
     const [item,setItem]=useState('')
     console.log(item);
+
     const addItem=()=>{
         list.push(item)
         
@@ -14,18 +16,18 @@ const ToDo = () => {
         
         
         
-      console.log('add korar pore '+list.length);
+     
     }
 const removeItem= (index)=>{
      
   list.splice(index,1)
  
     setList([ ...list])
-    console.log('remove korar pore '+list.length);
-
-
-
-
+     
+}
+const handleClear= ()=>{
+  let confirmation= window.confirm('Do you want Delete all list item ? ')
+  if(confirmation) setList('');
 }
     return (
        
@@ -82,6 +84,11 @@ const removeItem= (index)=>{
           
           
          
+              </div>
+              <br />
+              <div className="container"> 
+              <br />
+                <ClearList onClearList= {handleClear}/>
               </div>
           
             </div>
